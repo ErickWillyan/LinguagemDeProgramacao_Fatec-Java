@@ -5,6 +5,8 @@
  */
 package jogodavelha;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author 2830482411022
@@ -17,6 +19,10 @@ public class JogoDaVelha extends javax.swing.JFrame {
     public JogoDaVelha() {
         initComponents();
     }
+    
+    public void ClickButton(ActionListener e){
+            
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
