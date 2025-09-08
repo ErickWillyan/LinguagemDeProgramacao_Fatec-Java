@@ -7,6 +7,7 @@ package jogodavelha;
 
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,12 +15,15 @@ import javax.swing.JOptionPane;
  */
 public class JogoDaVelha extends javax.swing.JFrame {
 
+    boolean tecnologia, astronomia,esportes;
+    char sexo;
     /**
      * Creates new form JogoDaVelha
      */
     public JogoDaVelha() {
         initComponents();
     }
+    
     
     public void ClickButton(ActionListener e){
             
@@ -35,12 +39,35 @@ public class JogoDaVelha extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup2 = new javax.swing.ButtonGroup();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
+        jLabel3 = new javax.swing.JLabel();
+        chkTecnologia = new javax.swing.JCheckBox();
+        chkAstronomia = new javax.swing.JCheckBox();
+        chkEsportes = new javax.swing.JCheckBox();
+        cmbIdioma = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,6 +93,36 @@ public class JogoDaVelha extends javax.swing.JFrame {
         buttonGroup2.add(jRadioButton2);
         jRadioButton2.setText("Feminino");
 
+        jLabel3.setText("Interesses:");
+
+        chkTecnologia.setText("Tecnologia");
+        chkTecnologia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkTecnologiaActionPerformed(evt);
+            }
+        });
+
+        chkAstronomia.setText("Astronomia");
+
+        chkEsportes.setText("Esportes");
+
+        cmbIdioma.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Português", "Inglês", "Espanhol" }));
+
+        jLabel4.setText("Idioma:");
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nome", "Sexo", "Idioma"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,7 +130,7 @@ public class JogoDaVelha extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(24, 24, 24)
                             .addComponent(jLabel2)
@@ -81,11 +138,30 @@ public class JogoDaVelha extends javax.swing.JFrame {
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(25, 25, 25)
-                            .addComponent(jLabel1)
-                            .addGap(18, 18, 18)
-                            .addComponent(jRadioButton1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jRadioButton2))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addGap(29, 29, 29)
+                                    .addComponent(cmbIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel1)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jRadioButton1))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel3)
+                                            .addGap(27, 27, 27)
+                                            .addComponent(chkTecnologia)))
+                                    .addGap(40, 40, 40)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(chkAstronomia)
+                                        .addComponent(jRadioButton2))
+                                    .addGap(30, 30, 30)
+                                    .addComponent(chkEsportes))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -100,31 +176,62 @@ public class JogoDaVelha extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jRadioButton1)
                     .addComponent(jRadioButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 245, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(chkTecnologia)
+                    .addComponent(chkAstronomia)
+                    .addComponent(chkEsportes))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(cmbIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(24, 24, 24))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        jTextField1.setText("");
-        boolean masculino = jRadioButton1.isSelected();
-        boolean feminino = jRadioButton2.isSelected();
-       
-        if(masculino == true){
+        // TODO add your handling code here:        
+        if(jRadioButton1.isSelected() == true){
+            sexo = 'm';
             JOptionPane.showMessageDialog(null,"Sexo maculino selecionado","ALerta!",JOptionPane.OK_OPTION);
-        };
-        if(feminino == true){
+        }
+        
+        if(jRadioButton2.isSelected() == true){
+            sexo = 'f';
             JOptionPane.showMessageDialog(null,"Sexo feminino selecionado","ALerta!",JOptionPane.OK_OPTION);
-        };
+        }
+        
+        astronomia = chkAstronomia.isSelected();
+        tecnologia = chkTecnologia.isSelected();
+        esportes = chkEsportes.isSelected();
+        
+        if(esportes == true){
+        JOptionPane.showMessageDialog(null, "Esportes selecionado\n"+ cmbIdioma.getSelectedItem() + jTextField1.getText());
+        }else{
+        JOptionPane.showMessageDialog(null, "Esportes não selecionado");
+        }
+        
+        Pessoa p =new Pessoa(jTextField1.getText(),sexo,(String) cmbIdioma.getSelectedItem());
+        
+        DefaultTableModel tabela = (DefaultTableModel) jTable2.getModel();
+        tabela.addRow(p.ObterDados());
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void chkTecnologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkTecnologiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkTecnologiaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,11 +270,21 @@ public class JogoDaVelha extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JCheckBox chkAstronomia;
+    private javax.swing.JCheckBox chkEsportes;
+    private javax.swing.JCheckBox chkTecnologia;
+    private javax.swing.JComboBox<String> cmbIdioma;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
